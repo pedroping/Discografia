@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Discografia</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading">Digite para procurar um album ou banda</h1>
+        <input type="text" placeholder="Buscar albuns" id="search-box">  
+
+        <div class="image-container">
+            <div class="image" data-tittle="lambofgod" data-name="sacrament">
+                <img src="./images/sacrament.jpg" alt="">
+                <h3>Sacrament - Lamb Of God</h3>
+            </div>
+            <div class="image" data-tittle="lambofgod" data-name="lambofgod">
+                <img src="./images/Lambofgod.jpg" alt="">
+                <h3>Lamb of God - Lamb Of God</h3>
+            </div>
+            <div class="image" data-tittle="gojira" data-name="fortitude">
+                <img src="./images/fortitude.jpg" alt="">
+                <h3>Fortitude - Gojira</h3>
+            </div>
+            <div class="image" data-tittle="gojira" data-name="frommarstosirius">
+                <img src="./images/frommars.jpg" alt="">
+                <h3>From Mars To Sirius - Gojira</h3>
+            </div>
+            <div class="image" data-tittle="death" data-name="spiritualhealing">
+                <img src="./images/spiritualhealing.jpg" alt="">
+                <h3>spiritual Healing - Death</h3>
+            </div>
+            <div class="image" data-tittle="death" data-name="thesoundofperseverance">
+                <img src="./images/thesoundofperseverance.jpg" alt="">
+                <h3 href="https://music.youtube.com/playlist?list=OLAK5uy_lbySUED5AEoh5nVAUwCZE0ebgI49UHIxk">
+                    The Sound of Perseverance - Death
+                </h3>  
+            </div>
+        </div>
+        
+    </div>
+    <script>
+
+        let searchBox = document.querySelector('#search-box');
+        let images = document.querySelectorAll('.container .image-container .image');
+
+        searchBox.oninput = () => {
+            images.forEach(hide => hide.style.display = 'none');
+            let value = searchBox.value.replace(/\s+/g, "").toLowerCase();
+            images.forEach(filter =>{
+                let title = filter.getAttribute('data-tittle');
+                let name = filter.getAttribute('data-name');
+                let title_name =  name + title;
+                let name_tittle = title + name;
+                if(value == title || value == name || value == title_name || value == name_tittle){
+                    filter.style.display = 'block';
+                }
+                if(searchBox.value == ''){
+                    filter.style.display = 'block';
+                }
+            });
+
+        }
+    </script>
+</body>
+</html>
+
